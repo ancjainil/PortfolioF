@@ -248,7 +248,6 @@ export default function About() {
                       href={about.resume.mlLink}
                       data-border="rounded"
                       variant="secondary"
-                      icon="download"
                       label="Download ML/Data Science Resume"
                       size="l"
                       weight="default"
@@ -257,7 +256,6 @@ export default function About() {
                       href={about.resume.seLink}
                       data-border="rounded"
                       variant="secondary"
-                      icon="download"
                       label="Download Software Engineering Resume"
                       size="l"
                       weight="default"
