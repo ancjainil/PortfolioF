@@ -1,0 +1,119 @@
+---
+title: "VAR: Video Assistant Referee System"
+publishedAt: "2024-11-15"
+summary: "Developed a foul detection system using MViT, ResNet, and Two-Stream CNN to process multi-view football videos, reducing training time by 50%."
+images:
+  - "/images/projects/var/var-analysis-screenshot.png"
+team:
+  - name: "Jainil Rana"
+    role: "Machine Learning Engineer"
+    avatar: "/images/avatar.jpeg"
+    linkedIn: "https://linkedin.com/in/jainil-rana"
+---
+
+## VARify: Multi-task AI Model for Video Assistant Referee (VAR) Applications
+
+**By Jainil K. Rana**
+
+### Overview
+This project involves training a multi-task AI model designed for Video Assistant Referee (VAR) applications in football. The model leverages a two-stream neural network architecture to analyze both RGB and optical flow inputs, classifying various aspects of fouls, such as action type, offense severity, and body part involved.
+
+### Project Description
+In this project, I designed and implemented an AI model for football foul detection. The model performs multi-class classification tasks such as:
+- **Action Class:** E.g., Tackling, Diving
+- **Offense Type:** E.g., Offense, No Offense
+- **Severity Level:** Ranges from 1 to 5
+- **Body Part Involved:** E.g., Upper or Lower body
+- **Offense Severity:** E.g., No Card, Yellow Card, Red Card
+
+The model is trained using SoccerNet-MVFoul dataset and uses RGB frames along with optical flow to classify football actions. The project includes tools for data preprocessing, model training, and real-time inference through a FastAPI-based web interface.
+
+### Main Takeaways
+- The two-stream neural network architecture combines RGB frames and optical flow data for accurate analysis of fouls.
+- The project uses multi-task classification to predict multiple outputs simultaneously, such as action type, severity, and offense type.
+- A customizable training pipeline supports tuning parameters like batch size, learning rate, and number of epochs.
+- The FastAPI-based interface allows users to upload football match videos and get predictions for fouls, including action class, offense type, severity, and body part involved.
+
+### Features
+- **Two-Stream Neural Network:** Analyzes RGB frames and optical flow data for robust video analysis.
+- **Multi-Class Classification:** Simultaneously predicts:
+  - Action class (e.g., Tackling, Diving)
+  - Offense type (e.g., Offense, No Offense)
+  - Severity level (1 to 5)
+  - Body part involved (Upper or Lower body)
+  - Offense severity (e.g., No Card, Yellow Card, Red Card)
+- **Customizable Training:** Supports adjustable parameters like batch size, learning rate, and number of epochs.
+- **Data Preprocessing:** Includes utilities for loading and preprocessing video clips.
+
+### Requirements
+**Dependencies:**
+- torch
+- torchvision
+- numpy
+- opencv-python
+- Pillow
+- tqdm
+- scikit-learn
+
+Install dependencies using:
+```bash
+pip install -r requirements.txt
+```
+
+**Dataset:**
+The model uses the SoccerNet-MVFoul dataset, which consists of over 3900 football actions, with clips for each action in training, validation, and test sets. You can download the dataset and annotations after filling out an NDA. The data includes annotations for action class, offense type, severity, and body part involved.
+
+### How to Use
+**Data Preparation:**
+- Download and extract the SoccerNet dataset or your custom dataset.
+- Update the `data_path` variable in the code to point to your dataset directory.
+
+**Training the Model:**
+- Run the training script:
+```bash
+python train.py
+```
+- Customize training parameters such as:
+  - Number of epochs (`num_epochs`)
+  - Batch size (`batch_size`)
+  - Learning rate (`learning_rate`)
+
+**Model Architecture:**
+- Two ResNet50 backbones (one for RGB and one for optical flow).
+- Fully connected layers for each classification task.
+
+**Preprocessing:**
+- The preprocessing pipeline resizes frames to 112x112, normalizes RGB frames, and computes optical flow.
+
+**Evaluation:**
+- After training, the best model is saved as `best_model.pth`. Use this model for inference or further evaluation on the test set.
+
+### Project Structure
+```
+VAR/
+├── Interface/
+│   ├── ui.py           # FastAPI-based web interface
+│   ├── model.py        # Model loading and inference logic
+│   ├── best_model.pth  # Trained model weights
+├── varfoul/
+│   ├── train.py        # Training script
+│   ├── model.py        # Two-stream neural network architecture
+│   ├── preprocess.py   # Preprocessing pipeline
+```
+
+### Interface
+The project includes a FastAPI-based interface that allows users to upload football match video clips and obtain predictions for various foul-related classifications:
+- Action class
+- Offense type
+- Severity level
+- Body part involved
+- Offense severity
+
+### Future Improvements
+- Improving real-time processing speed.
+- Incorporating advanced optical flow algorithms.
+- Enhancing model accuracy and efficiency with additional data.
+
+### Individual Contributions
+- **Jainil K. Rana (300362571):** Developed the FastAPI-based web interface, integrated models for real-time foul classification, and trained the MViT model for multi-task foul classification.
+- **Omkar P. Harkare (300359531):** Trained the ResNet R3D-18 and TwoStreamResNet models for multi-task classification using spatiotemporal video data. 

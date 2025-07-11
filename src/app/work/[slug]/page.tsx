@@ -5,6 +5,7 @@ import { baseURL, about, person, work } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
+import React from "react";
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = getPosts(["src", "app", "work", "projects"]);
@@ -53,47 +54,71 @@ export default async function Project({
     })) || [];
 
   return (
-    <Column as="section" maxWidth="m" horizontal="center" gap="l">
-      <Schema
-        as="blogPosting"
-        baseURL={baseURL}
-        path={`${work.path}/${post.slug}`}
-        title={post.metadata.title}
-        description={post.metadata.summary}
-        datePublished={post.metadata.publishedAt}
-        dateModified={post.metadata.publishedAt}
-        image={post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`}
-        author={{
-          name: person.name,
-          url: `${baseURL}${about.path}`,
-          image: `${baseURL}${person.avatar}`,
+    <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
+      {/* Animated Gradient Background */}
+      <div
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          zIndex: 0,
+          pointerEvents: 'none',
+          background: 'linear-gradient(270deg, #00c6fb, #005bea, #ff6e7f, #bfe9ff, #00c6fb)',
+          backgroundSize: '400% 400%',
+          animation: 'gradientBG 15s ease infinite',
         }}
       />
-      <Column maxWidth="xs" gap="16">
-        <Button data-border="rounded" href="/work" variant="tertiary" weight="default" size="s" prefixIcon="chevronLeft">
-          Projects
-        </Button>
-        <Heading variant="display-strong-s">{post.metadata.title}</Heading>
-      </Column>
-      {post.metadata.images.length > 0 && (
-        <Media
-          priority
-          aspectRatio="16 / 9"
-          radius="m"
-          alt="image"
-          src={post.metadata.images[0]}
+      <style>{`
+        @keyframes gradientBG {
+          0% {background-position: 0% 50%;}
+          50% {background-position: 100% 50%;}
+          100% {background-position: 0% 50%;}
+        }
+      `}</style>
+      <Column as="section" maxWidth="m" horizontal="center" gap="l" style={{ position: 'relative', zIndex: 1 }}>
+        <Schema
+          as="blogPosting"
+          baseURL={baseURL}
+          path={`${work.path}/${post.slug}`}
+          title={post.metadata.title}
+          description={post.metadata.summary}
+          datePublished={post.metadata.publishedAt}
+          dateModified={post.metadata.publishedAt}
+          image={post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`}
+          author={{
+            name: person.name,
+            url: `${baseURL}${about.path}`,
+            image: `${baseURL}${person.avatar}`,
+          }}
         />
-      )}
-      <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
-        <Flex gap="12" marginBottom="24" vertical="center">
-          {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="m" />}
-          <Text variant="body-default-s" onBackground="neutral-weak">
-            {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
-          </Text>
-        </Flex>
-        <CustomMDX source={post.content} />
+        <Column maxWidth="xs" gap="16">
+          <Button data-border="rounded" href="/work" variant="tertiary" weight="default" size="s" prefixIcon="chevronLeft">
+            Projects
+          </Button>
+          <Heading variant="display-strong-s">{post.metadata.title}</Heading>
+        </Column>
+        {post.metadata.images.length > 0 && (
+          <Media
+            priority
+            aspectRatio="16 / 9"
+            radius="m"
+            alt="image"
+            src={post.metadata.images[0]}
+          />
+        )}
+        <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
+          <Flex gap="12" marginBottom="24" vertical="center">
+            {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="m" />}
+            <Text variant="body-default-s" onBackground="neutral-weak">
+              {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
+            </Text>
+          </Flex>
+          <CustomMDX source={post.content} />
+        </Column>
+        <ScrollToHash />
       </Column>
-      <ScrollToHash />
-    </Column>
+    </div>
   );
 }

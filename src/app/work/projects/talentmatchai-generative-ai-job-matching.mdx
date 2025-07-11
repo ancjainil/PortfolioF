@@ -1,0 +1,62 @@
+---
+title: "TalentMatchAI: Generative AI Job Matching & Outreach Agent"
+publishedAt: "2024-12-01"
+summary: "Designed an intelligent job matching system using LangGraph, OpenAI embeddings, and pgvector, achieving 90% relevance in internal tests."
+images:
+  - "/images/projects/talentmatchai/wip.png"
+team:
+  - name: "Jainil Rana"
+    role: "Software Engineer & ML Engineer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://linkedin.com/in/jainil-rana"
+---
+
+## Overview
+
+TalentMatchAI is an intelligent job matching system that leverages generative AI to match candidates with job opportunities and automate outreach processes. The system uses advanced NLP techniques and vector embeddings to achieve high accuracy in job-candidate matching.
+
+## Key Features
+
+- **Intelligent Job Matching**: Implemented a sophisticated matching algorithm using OpenAI embeddings and pgvector for semantic similarity matching between job descriptions and candidate profiles.
+- **LangGraph Integration**: Utilized LangGraph for orchestrating complex AI workflows and decision-making processes in the job matching pipeline.
+- **Automated Outreach**: Built an automated outreach system that generates personalized messages for candidates based on their profiles and matched job opportunities.
+- **High Accuracy**: Achieved 90% relevance in internal tests, significantly outperforming traditional keyword-based matching approaches.
+- **Scalable Architecture**: Designed the system to handle large volumes of job postings and candidate profiles efficiently.
+
+## Technologies Used
+
+- **LangGraph**: For orchestrating AI workflows and complex decision trees
+- **OpenAI API**: For generating embeddings and chat completions
+- **pgvector**: For efficient vector similarity search in PostgreSQL
+- **Python**: Core development language with async/await patterns
+- **PostgreSQL**: Database with vector extension for storing embeddings
+- **FastAPI**: RESTful API framework for the backend services
+
+## Technical Implementation
+
+The system architecture consists of several key components:
+
+1. **Embedding Generation**: Job descriptions and candidate profiles are converted to high-dimensional vectors using OpenAI's embedding API
+2. **Vector Storage**: Embeddings are stored in PostgreSQL using pgvector extension for efficient similarity search
+3. **Matching Algorithm**: Cosine similarity is used to find the best matches between candidates and job opportunities
+4. **LangGraph Workflow**: Complex decision-making processes are orchestrated using LangGraph for determining match quality and generating outreach content
+5. **API Layer**: FastAPI provides RESTful endpoints for job matching and candidate management
+
+## Challenges and Solutions
+
+One of the main challenges was balancing matching accuracy with system performance. The solution involved:
+- Implementing efficient vector indexing in PostgreSQL
+- Using batch processing for embedding generation
+- Caching frequently accessed embeddings
+- Optimizing the similarity search algorithms
+
+## Outcome
+
+The system successfully achieved 90% relevance in internal tests, providing a significant improvement over traditional matching approaches. The automated outreach feature reduced manual effort by 70% while maintaining high-quality, personalized communication with candidates.
+
+## Future Enhancements
+
+- Integration with additional job boards and candidate sources
+- Real-time matching updates using webhooks
+- Advanced analytics dashboard for matching performance
+- Multi-language support for international job markets 

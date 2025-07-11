@@ -1,0 +1,62 @@
+---
+title: "Prior Auth Predictor (Healthcare AI)"
+publishedAt: "2023-09-15"
+summary: "Developed an AI model using BERT-based NLP and time-series analysis to predict prior authorization outcomes from EHR data, deployed using AWS EC2 and Lambda."
+images:
+  - "/images/projects/prior-auth/healthcare.png"
+team:
+  - name: "Jainil Rana"
+    role: "Machine Learning Engineer"
+    avatar: "/images/avatar.jpeg"
+    linkedIn: "https://linkedin.com/in/jainil-rana"
+---
+
+## ClassifyMyMeds: Predicting Prior Authorization Approval and Volume for CoverMyMeds
+
+**CoverMyMeds Challenge at The Erdos Institute 2021 Boot Camp**  
+By Jainil Rana
+
+### Overview
+This project focuses on predicting the approval of Prior Authorizations (PA) for medications and forecasting the volume of future PAs. Using simulated data from CoverMyMeds, I employed a variety of classification and time series models to predict PA approval, volume, and drug refill limitations.
+
+### Project Description
+Prior Authorizations (PAs) are required by insurance providers to approve a prescribed drug or treatment. This project aims to predict the likelihood of PA acceptance, forecast PA volume, identify formulary drugs for each payer, and predict the limitations on refills for medications. The data used in the project spans from 2021 to 2023 and includes over a million simulated pharmacy claims entries.
+
+I surveyed multiple classifiers for predicting PA approval likelihood and applied time-series analysis techniques to forecast the PA volume. Additionally, I identified which drugs are preferred by each payer’s formulary and predicted refill limitations.
+
+### Main Takeaways
+- **PA Acceptance Prediction:** The Random Forest model performed the best in terms of ROC AUC score for PA classification.
+- **PA and Claim Volume Prediction:** I used Additive Exponential Smoothing and ARIMA for monthly PA volume forecasts, achieving high accuracy.
+- **Formulary Identification:** I identified the formulary for each payer and predicted drugs that require prior authorization.
+- **Limitation of Fills:** A Poisson distribution was used to predict the limitation on drug refills, providing insights for cost-effective PA management.
+
+### CoverMyMeds Data
+The data includes simulated pharmacy claims from 2021–2023 with the following features:
+- **Patient Information:** Insurer, medical situation, prescribed drug.
+- **Claim Information:** Drug rejection codes, approval or denial status.
+- **PA Data:** Patient’s medical history, correct diagnosis, and contraindications.
+
+### Predicting PA Acceptance
+A variety of models were tested for PA approval classification, with Random Forest providing the highest ROC AUC score. The baseline model showed that predicting PA approval by chance resulted in a 50% ROC AUC, while the Random Forest model improved it significantly.
+
+### Predicting PA and Claim Volume
+To forecast the PA volume, I experimented with time-series models like exponential smoothing and ARIMA. The best model showed that exponential smoothing with a damped trend provided the most accurate monthly forecast, while Random Forest and LSTM gave robust daily forecasts.
+
+### Identifying the Formulary for Each Payer
+Using reject codes (e.g., 70 for non-covered drugs, 75 for drugs that require PA, and 76 for drugs over refill limits), I identified each payer’s formulary and its limitations.
+
+### Predicting the Limitation of Fills
+For drugs requiring prior authorization (PA), the project predicted the limitation of drug refills, reducing PA volume by improving refill limitations based on the average number of fills.
+
+### Key Models Used
+- Logistic Regression
+- Decision Trees
+- Random Forest
+- LSTM for Time-Series Forecasting
+- ARIMA for Time-Series Forecasting
+
+### Tools and Technologies
+- **Machine Learning:** Random Forest, LSTM, ARIMA, Additive Exponential Smoothing
+- **Data Processing:** Pandas, NumPy, Scikit-learn, XGBoost
+- **Cloud Services:** AWS Lambda, AWS EC2
+- **Deployment:** Heroku App for PA prediction: Pachecker 

@@ -1,20 +1,21 @@
 import { Logo } from "@once-ui-system/core";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Jainil",
+  lastName: "Rana",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  role: "Software Engineer & Machine Learning Engineer",
+  avatar: "/images/avatar.jpeg",
+  email: "jainilrana503@gmail.com",
+  location: "America/Toronto", // IANA time zone identifier for Ottawa
+  locationLabel: "Ottawa, CA", // Display label
+  languages: ["English", "Hindi", "Gujarati"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
-  display: true,
+  display: false, // Disabled newsletter for now
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
@@ -30,17 +31,12 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/ancjainil",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://linkedin.com/in/jainil-rana",
   },
   {
     name: "Email",
@@ -55,16 +51,15 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Building intelligent solutions with AI and software engineering</>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
-    href: "/work/building-once-ui-a-customizable-design-system",
+    title: <>Recent project: <strong className="ml-4">TalentMatchAI</strong></>,
+    href: "/work/talentmatchai-generative-ai-job-matching",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at <Logo icon="/trademarks/wordmark-dark.svg" style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I'm Jainil, a Software Engineer with a focus on Machine Learning and Generative AI. Currently pursuing an M.Eng. in Computer Engineering at the University of Ottawa with experience in cloud computing, AI-based applications, and data engineering.
     </>
   ),
 };
@@ -82,7 +77,7 @@ const about = {
     display: true,
   },
   calendar: {
-    display: true,
+    display: false, // Disabled calendar for now
     link: "https://cal.com",
   },
   intro: {
@@ -90,9 +85,7 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Howdy ! I'm Jainil, a Software Engineer with a focus on Machine Learning and Generative AI. Currently pursuing an M.Eng. in Computer Engineering at the University of Ottawa with experience in cloud computing, AI-based applications, and data engineering. He has a strong foundation in both software engineering and machine learning, having worked on high-impact projects using AWS, Azure, and advanced machine learning frameworks like PyTorch and Scikit-learn.
       </>
     ),
   },
@@ -101,41 +94,57 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "University of Ottawa",
+        timeframe: "Jan 2025 – Apr 2025",
+        role: "Machine Learning Engineer (Research Assistant)",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Refactored legacy Python scripts for processing multi-gigabyte time-series datasets, improving memory efficiency by 2.4x using NumPy, pandas, and joblib.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Improved the testability of ML workflows, enabling 3x faster iteration for research teams.
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "JMC Moving",
+        timeframe: "Sep 2024 – Dec 2024",
+        role: "Software Engineer Intern",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Developed an automated job scheduling system using Java, Spring Boot, and Azure, reducing employee assignment bottlenecks by 70%.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Implemented a cost estimation PDF generation system, improving retrieval efficiency by 40% using Azure Blob Storage.
+          </>,
+          <>
+            Deployed the system using Docker, resolving deployment challenges and optimizing configurations for scalability.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "University of Ottawa",
+        timeframe: "Sep 2024 – Dec 2024",
+        role: "Teaching Assistant (Software Engineering)",
+        achievements: [
+          <>
+            Mentored students in version control with Git, mobile app development with Android Studio, and object-oriented programming with Java, Spring-Boot, and Firebase.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Aarogram Inc.",
+        timeframe: "Jan 2023 – Jul 2023",
+        role: "Software Engineer (Intern)",
+        achievements: [
+          <>
+            Designed and developed an MVP frontend system for patient prior authorization, achieving HIPAA compliance and integrating with EHR and FHIR APIs.
+          </>,
+          <>
+            Implemented backend automation using AWS services (EC2, S3, Lambda), improving operational efficiency by 40%.
           </>,
         ],
         images: [],
@@ -144,62 +153,71 @@ const about = {
   },
   studies: {
     display: true, // set to false to hide this section
-    title: "Studies",
+    title: "Education",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "University of Ottawa, Ottawa, CA",
+        description: <>M.Eng. in Computer Engineering (AI Concentration), GPA: 3.8/4.0 (Aug 2023 – Apr 2025)</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Charotar Institute of Science and Technology, Gujarat, IN",
+        description: <>B.Tech in Computer Engineering, GPA: 3.7/4.0 (Aug 2019 – Apr 2023)</>,
       },
     ],
   },
   technical: {
     display: true, // set to false to hide this section
-    title: "Technical skills",
+    title: "Technical Skills",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Programming Languages",
+        description: <>Python, Java, JavaScript, C++, SQL, Bash, MATLAB</>,
+        images: [],
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Machine Learning & AI",
+        description: <>PyTorch, Scikit-learn, BERT, spaCy, Transformers, LangGraph, OpenAI (Embeddings, Chat Completions), Retrieval-Augmented Generation (RAG), LangChain</>,
+        images: [],
+      },
+      {
+        title: "Cloud Services",
+        description: <>AWS (EC2, S3, Lambda, SageMaker, API Gateway), Azure (Blob Storage, App Services)</>,
+        images: [],
+      },
+      {
+        title: "Tools & Concepts",
+        description: <>Docker, Git, Linux, Pandas, NumPy, TDD, Agile Development</>,
+        images: [],
       },
     ],
+  },
+  awards: {
+    display: true,
+    title: "Awards & Achievements",
+    achievements: [
+      {
+        title: "uOttaHack-6 Hackathon",
+        description: <>Runners-up, 2024</>,
+      },
+      {
+        title: "Geeks-for-Geeks",
+        description: <>2nd place in the Problem of the Day (Jan 2024 – Apr 2024)</>,
+      },
+    ],
+  },
+  resume: {
+    display: true,
+    title: "Resume",
+    description: "Download my latest resumes for ML/Data Science and Software Engineering roles. Each is tailored for the respective field.",
+    mlLink: "/ML.pdf",
+    seLink: "/SEG.pdf",
   },
 };
 
 const blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
+  title: "Writing about AI, ML, and software engineering...",
   description: `Read what ${person.name} has been up to recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
@@ -209,7 +227,7 @@ const work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
+  description: `AI, ML, and software engineering projects by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
 };
